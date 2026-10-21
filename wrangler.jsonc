@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "argon-planner",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-10-21",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "argon-planner",
+      "database_id": "e966db64-875a-46eb-b584-a5fa1f174c34",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "workflows": [
+    {
+      "binding": "FICHAJE",
+      "name": "argon-fichaje",
+      "class_name": "FichajeWorkflow"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "* * * * *"
+    ]
+  },
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true
+    }
+  },
+  "vars": {
+    "APP_MODE": "simulation"
+  },
+  "account_id": "dd566cdd2698109386a2f97f3e3c1dba"
+}

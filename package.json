@@ -1,0 +1,25 @@
+{
+  "name": "argon-planner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/cloudflare.mjs dev",
+    "types": "node scripts/cloudflare.mjs types --strict-vars=false",
+    "check": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "db:local": "node scripts/cloudflare.mjs d1 migrations apply DB --local",
+    "db:remote": "node scripts/cloudflare.mjs d1 migrations apply DB --remote",
+    "deploy": "node scripts/cloudflare.mjs deploy",
+    "cf": "node scripts/cloudflare.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "latest",
+    "wrangler": "latest",
+    "typescript": "latest",
+    "tsx": "latest"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
